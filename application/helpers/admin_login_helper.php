@@ -1,9 +1,10 @@
 <?php
-if (!defined('BASEPATH')) exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 function is_admin_logged_in()
 {
-    if (!isset($_SESSION['admin_login'])) {
-        redirect(base_url('administrator/login'));
+    $ci =& get_instance();
+    if (!$ci->session->userdata('admin_login')) {
+        redirect('admin/login');
     }
 }
